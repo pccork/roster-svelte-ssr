@@ -10,6 +10,8 @@ export const loggedInUser = $state({
   _id: ""
 });
 
+//export const Coordinates = $state({ lat: 52.16, lng: -7.15 });
+
 export const currentRosters = $state({ rosters: [] as Roster[] });
 
 export const currentAgencies = $state({ agencies: [] as Agency[] });
@@ -31,5 +33,6 @@ export const currentDataSets = $state({
       }
     ]
   }
+  
 })
 

@@ -1,3 +1,22 @@
+ This is the front end of the RosterCare app
+RosterCare is a web application designed to manage and log roster hours for healthcare professionals, specifically doctors and nurses, across various locations in Ireland.  It is part of the assignment for Computer Science Higher Diploma, SETU, Ireland. 
+
+### Frontend: RosterSvelteShell (https://github.com/pccork/roster-svelte-shell)
+
+1. Go to [GitHub](https://github.com/pccork/roster-svelte-shell) 
+1. Clone the repo:
+   ```bash
+   git clone 
+2. Go to [Netify](https://rostersvelteshell.netlify.app/)
+
+
+### Backend: RosterCare 
+
+1. Go to [GitHub](https://https://github.com/pccork/RosterCare) 
+1. Go to [Render](https://rostercare-4.onrender.com) and remix the API server.
+
+
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).

@@ -5,8 +5,6 @@ import { rosterService } from "./roster-service";
 
 
 
-
-
 export function computeByProfession(rosterList: Roster[]) {
   rosterList.forEach((roster) => {
     if (roster.profession == "nurse") {
