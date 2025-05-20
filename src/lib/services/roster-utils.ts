@@ -1,7 +1,11 @@
-import { currentDataSets, loggedInUser } from "$lib/runes.svelte";
+import { currentDataSets, currentAgencies, currentRosters, loggedInUser } from "$lib/runes.svelte";
 import type { Agency, Roster } from "$lib/types/roster-types";
 import type { LeafletMap } from "$lib/ui/LeafletMap.svelte";
 import { rosterService } from "./roster-service";
+
+
+
+
 
 export function computeByProfession(rosterList: Roster[]) {
   rosterList.forEach((roster) => {
@@ -18,8 +22,7 @@ export function computeByAgency(rosterList: Roster[], agencies: Agency[]) {
   agencies.forEach((agency) => {
     currentDataSets.rostersByAgency.labels.push(
       // @ts-ignore
-      `${agency.code}`
-    );
+    `${agency.code}, ${agency.agencyName}`);
     currentDataSets.rostersByAgency.datasets[0].values.push(0);
   });
 
@@ -34,16 +37,33 @@ export function computeByAgency(rosterList: Roster[], agencies: Agency[]) {
   });
 }
 
+
 export async function refreshRosterMap (map:LeafletMap) {
-  if (!loggedInUser.token) rosterService.restoreSession();
   const rosters = await rosterService.getRosters(loggedInUser.token);
   rosters.forEach((roster: Roster) => {
-      if (typeof roster.agency !== "string") {
-        const popup = `${roster.agency.agencyName} ${roster.agency.code}: €${roster.hour}`;
-        map.addMarker(roster.lat, roster.lng, popup);
-      }
-    });
-    const lastRoster = rosters[rosters.length - 1];
-    if (lastRoster) map.moveTo(lastRoster.lat, lastRoster.lng);
+    if (typeof roster.agency !== "string") {
+      const popup = `${roster.agency.code} ${roster.agency.agencyName}: €${roster.hour}`;
+      map.addMarker(roster.lat, roster.lng, popup);
+    }
+  });
+  const lastRoster = rosters[rosters.length - 1];
+  if (lastRoster) map.moveTo(lastRoster.lat, lastRoster.lng);
+}
+
+export function clearRosterState() {
+  currentRosters.rosters = [];
+  currentAgencies.agencies = [];
+  loggedInUser.email = "";
+  loggedInUser.name = "";
+  loggedInUser.token = "";
+  loggedInUser._id = "";
+}
+
+
+export async function refreshRosterState(rosters: Roster[], agencies: Agency[]) {
+  currentRosters.rosters = rosters;
+  currentAgencies.agencies = agencies;
+  computeByProfession(currentRosters.rosters);
+  computeByAgency(currentRosters.rosters, currentAgencies.agencies);
 }
 

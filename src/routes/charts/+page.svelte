@@ -4,6 +4,12 @@
     // @ts-ignore
     import Chart from "svelte-frappe-charts";
     import Card from "$lib/ui/Card.svelte";
+    import type { PageProps } from "./$types";
+
+    import { refreshRosterState } from "$lib/services/roster-utils";
+
+    let { data }: PageProps = $props();
+    refreshRosterState(data.rosters, data.agencies);
   
     
   </script>

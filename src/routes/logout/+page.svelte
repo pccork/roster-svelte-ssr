@@ -1,8 +1,9 @@
 <script lang="ts">
+    import { browser } from "$app/environment";
     import { goto } from "$app/navigation";
-    import { rosterService } from "$lib/services/roster-service";
+    import { clearRosterState } from "$lib/services/roster-utils";
 
-  rosterService.clearSession();
-    goto("/");
-  </script>
+    clearRosterState();
+  if (browser) goto("/");
+</script>
   

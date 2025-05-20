@@ -3,15 +3,12 @@
     import Card from "$lib/ui/Card.svelte";
     import RosterList from "$lib/ui/RosterList.svelte";
     import { rosterService } from "$lib/services/roster-service";
-    import { onMount } from "svelte";
-    import type { Roster } from "$lib/types/roster-types";
+    import { refreshRosterState } from "$lib/services/roster-utils";
+    import type { PageProps } from "./$types";
   
     subTitle.text = "Rosters to Date";
-    let rosters: Roster[] = [];
-    onMount(async () => {
-      rosters = await rosterService.getRosters(loggedInUser.token);
-      
-  });
+    let { data }: PageProps = $props();
+  refreshRosterState(data.rosters, data.agencies);
   </script>
   
   <Card title="Rosters">

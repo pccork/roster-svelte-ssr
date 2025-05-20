@@ -1,13 +1,12 @@
 import axios from "axios";
 import type { Session, User } from "$lib/types/roster-types";
 import type { Agency, Roster } from "$lib/types/roster-types";
-import { currentRosters, currentAgencies,loggedInUser} from "$lib/runes.svelte";
-import { computeByAgency, computeByProfession } from "./roster-utils";
+
 
 
 export const rosterService = {
-  // baseUrl: "http://localhost:4000",
-  baseUrl: "https://terrific-acute-bison.glitch.me",
+     baseUrl: "http://localhost:4000",
+  // baseUrl: "https://rostercare-4.onrender.com",
 
   async signup(user: User): Promise<boolean> {
     try {
@@ -31,8 +30,6 @@ export const rosterService = {
           token: response.data.token,
           _id: response.data._id
         };
-        this.saveSession(session, email);
-        await this.refreshRosterInfo();
         return session;
       }
       return null;
@@ -43,55 +40,6 @@ export const rosterService = {
   },
 
   
-  saveSession(session: Session, email: string) {
-    loggedInUser.email = email;
-    loggedInUser.name = session.name;
-    loggedInUser.token = session.token;
-    loggedInUser._id = session._id;
-    localStorage.roster = JSON.stringify(loggedInUser);
-  },
-   
-  async restoreSession() {
-    const savedLoggedInUser = localStorage.roster;
-    if (savedLoggedInUser) {
-      const session = JSON.parse(savedLoggedInUser);
-      loggedInUser.email = session.email;
-      loggedInUser.name = session.name;
-      loggedInUser.token = session.token;
-      loggedInUser._id = session._id;
-    }
-    await this.refreshRosterInfo();
-  },
-
-  clearSession() {
-    currentRosters.rosters = [];
-    currentAgencies.agencies = [];
-    loggedInUser.email = "";
-    loggedInUser.name = "";
-    loggedInUser.token = "";
-    loggedInUser._id = "";
-    localStorage.removeItem("roster");
-  },
-
-  async refreshRosterInfo() {
-    if (loggedInUser.token) {
-      currentRosters.rosters = await this.getRosters(loggedInUser.token);
-      currentAgencies.agencies = await this.getAgencies(loggedInUser.token);
-      computeByProfession(currentRosters.rosters);
-      computeByAgency(currentRosters.rosters, currentAgencies.agencies)
-    }
-  },
-
-  disconnect() {
-    loggedInUser.email = "";
-    loggedInUser.name = "";
-    loggedInUser.token = "";
-    loggedInUser._id = "";
-    localStorage.removeItem("roster");
-  },
-
-  
-
 
   async roster(roster: Roster, token: string) {
     try {
@@ -100,8 +48,7 @@ export const rosterService = {
         this.baseUrl + "/api/agencies/" + roster.agency + "/rosters",
         roster
       );
-      await this.refreshRosterInfo();
-      return response.status == 200;
+      return response.data
     } catch (error) {
       console.log(error);
       return false;
