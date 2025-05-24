@@ -5,8 +5,8 @@ import type { Agency, Roster } from "$lib/types/roster-types";
 
 
 export const rosterService = {
-    // baseUrl: "http://localhost:4000",
-  baseUrl: "https://rostercare-4.onrender.com",
+    baseUrl: "http://localhost:4000",
+    //baseUrl: "https://rostercare-4.onrender.com",
 
   async signup(user: User): Promise<boolean> {
     try {

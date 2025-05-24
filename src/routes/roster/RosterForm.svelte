@@ -2,11 +2,11 @@
   import { enhance } from "$app/forms";
   import Coordinates from "$lib/ui/Coordinates.svelte";
   
-  let { agencyList = [], enhanceFn, message = $bindable(""), lat: latProp = 52.160858, lng: lngProp = -7.15242} = $props();
-  let lat = $state(latProp);
-  let lng = $state(lngProp);
-  //let lat = 52.160858;
-  //et lng = -7.15242;
+  let { agencyList = [], enhanceFn, message = $bindable("") } = $props();
+  //let lat = $state(latProp);
+  //let lng = $state(lngProp);
+  let lat = 52.160858;
+  let lng = -7.15242;
   let professions = ["doctor", "nurse"];
 </script>
   
