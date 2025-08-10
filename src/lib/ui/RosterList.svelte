@@ -21,7 +21,7 @@
           <td>
             {roster.profession}
           </td><td>
-            {roster.agency.code}, {roster.agency.agencyName}
+            {roster.agency.code}, {roster.agency.AgencyName}
           </td>
           <td>
             {roster.staff.lastName}, {roster.staff.firstName}

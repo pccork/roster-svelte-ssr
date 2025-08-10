@@ -5,12 +5,11 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async ({ parent }) => {
   const { session } = await parent();
   if (session) {
-    return {
     
-    rosters: await rosterService.getRosters(session.token),
-    agencies: await rosterService.getAgencies(session.token)
+    return {
+      rosters: await rosterService.getRosters(session.token),
+      agencies: await rosterService.getAgencies(session.token)
     };
-   
   }
 };
 

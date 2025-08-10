@@ -2,11 +2,20 @@
   import { enhance } from "$app/forms";
   import Coordinates from "$lib/ui/Coordinates.svelte";
   
-  let { agencyList = [], enhanceFn, message = $bindable("") } = $props();
-  //let lat = $state(latProp);
-  //let lng = $state(lngProp);
+  
+  let { agencyList = [], enhanceFn, message = $bindable("")} = $props();
+  let lat = $state(52.160858);
+  let lng = $state(-7.15242);
+  /*
   let lat = 52.160858;
   let lng = -7.15242;
+  */
+
+  /*
+  let { agencyList = [], enhanceFn, message = $bindable(""), lat: latProp = 52.160858, lng: lngProp = -7.15242} = $props();
+  let lat = $state(latProp);
+  let lng = $state(lngProp);
+  */
   let professions = ["doctor", "nurse"];
 </script>
   
@@ -28,7 +37,7 @@
     <div class="select">
       <select name="agency">
         {#each agencyList as agency}
-          <option value={agency._id}>{agency.code},{agency.agencyName} </option>
+          <option value={agency._id}>{agency.code},{agency.AgencyName} </option>
         {/each}
       </select>
     </div>

@@ -20,7 +20,7 @@ export function computeByAgency(rosterList: Roster[], agencies: Agency[]) {
   agencies.forEach((agency) => {
     currentDataSets.rostersByAgency.labels.push(
       // @ts-ignore
-    `${agency.code}, ${agency.agencyName}`);
+    `${agency.code}, ${agency.AgencyName}`);
     currentDataSets.rostersByAgency.datasets[0].values.push(0);
   });
 
@@ -35,18 +35,21 @@ export function computeByAgency(rosterList: Roster[], agencies: Agency[]) {
   });
 }
 
-
+//
 export async function refreshRosterMap (map:LeafletMap) {
   const rosters = await rosterService.getRosters(loggedInUser.token);
   rosters.forEach((roster: Roster) => {
     if (typeof roster.agency !== "string") {
-      const popup = `${roster.agency.code} ${roster.agency.agencyName}: €${roster.hour}`;
+      const popup = `${roster.agency.code} ${roster.agency.AgencyName}: €${roster.hour}`;
       map.addMarker(roster.lat, roster.lng, popup);
     }
   });
   const lastRoster = rosters[rosters.length - 1];
   if (lastRoster) map.moveTo(lastRoster.lat, lastRoster.lng);
 }
+ 
+
+
 
 export function clearRosterState() {
   currentRosters.rosters = [];
@@ -57,7 +60,7 @@ export function clearRosterState() {
   loggedInUser._id = "";
 }
 
-
+//Receives data from the server, Calls refreshRosterState to populate global state
 export async function refreshRosterState(rosters: Roster[], agencies: Agency[]) {
   currentRosters.rosters = rosters;
   currentAgencies.agencies = agencies;

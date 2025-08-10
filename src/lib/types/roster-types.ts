@@ -13,7 +13,7 @@ export interface Session {
   }
 
   export interface Agency {
-    agencyName: string;
+    AgencyName: string;
     code: string;
     office: string;
     _id: string;

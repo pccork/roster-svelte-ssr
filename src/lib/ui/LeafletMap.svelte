@@ -5,7 +5,7 @@
   
     let { height = 80 } = $props();
     let id = "home-map-id";
-    let location = { lat: 53.2734, lng: -7.7783203 };
+    let location = { lat: 52.161290, lng: -7.231540};
     let zoom = 8;
     let minZoom = 7;
     let activeLayer = "Terrain";
