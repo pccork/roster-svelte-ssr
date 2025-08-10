@@ -30,6 +30,7 @@ export interface Session {
 
   export interface DataSet {
     labels: string[];
-    datasets: [{ values: number[] }];
+    datasets: { values: number[] }[]; //datasets: { values: number[] }[]; 
+    //datasets: [{ values: number[] }];A tuple like means “exactly one item in the array.
   }
   

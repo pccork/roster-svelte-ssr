@@ -2,7 +2,7 @@ import { rosterService } from "$lib/services/roster-service";
 //import type { Session } from "$lib/types/roster-types";
 import type { PageServerLoad } from "./$types";
 
-/*
+/*Uses rosterService to fetch data from an API
 
 export const load: PageServerLoad = async ({ cookies }) => {
   const cookieStr = cookies.get("donation-user") as string;
