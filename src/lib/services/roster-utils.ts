@@ -45,7 +45,12 @@ export async function refreshRosterMap (map:LeafletMap) {
     }
   });
   const lastRoster = rosters[rosters.length - 1];
-  if (lastRoster) map.moveTo(lastRoster.lat, lastRoster.lng);
+  if (lastRoster) {
+  map.moveTo(lastRoster.lat, lastRoster.lng);
+} else {
+  map.moveTo(52.160858, -7.15242);
+}
+  //if (lastRoster) map.moveTo(lastRoster.lat, lastRoster.lng);
 }
  
 
