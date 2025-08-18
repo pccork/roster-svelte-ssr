@@ -50,7 +50,7 @@ export const rosterService = {
     }
   },
 
-  async rostering(roster: Roster) {
+  async roster(roster: Roster) {
     try {
       const newRoster = await rosterStore.add(roster);
       return JSON.parse(JSON.stringify(newRoster));

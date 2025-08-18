@@ -35,7 +35,7 @@ export const actions = {
         };
 
         try {
-        const newRoster = await rosterService.rostering(roster);
+        const newRoster = await rosterService.roster(roster);
         return newRoster;
         } catch (error) {
         return {

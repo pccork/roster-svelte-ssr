@@ -7,7 +7,7 @@
 
   subTitle.text = "Roster to Date";
   let { data }: PageProps = $props();
-  refreshRosterState(data.rosters, data.candidates);
+  refreshRosterState(data.rosters, data.agencies);
 </script>
 
 <Card title="Rosters">

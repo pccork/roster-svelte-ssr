@@ -28,7 +28,7 @@
              {/if}
           </td>
           <td>
-            {#if typeof roster.agency !== "string"}
+            {#if typeof roster.staff !== "string"}
                {roster.staff.lastName}, {roster.staff.firstName}
             {/if}
           </td>
