@@ -4,6 +4,8 @@
 	import Heading from "$lib/ui/Heading.svelte";
 	import Menu from "$lib/ui/Menu.svelte";
   //import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
+  import { browser } from "$app/environment";
 
  export let data: any;
   if (data.session) {
@@ -11,6 +13,7 @@
     loggedInUser.name = data.session.name;
     loggedInUser.token = data.session.token;
     loggedInUser._id = data.session._id;
+    if (browser) goto("/roster");
   } else {
     loggedInUser.email = "";
     loggedInUser.name = "";

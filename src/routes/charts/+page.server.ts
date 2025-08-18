@@ -17,16 +17,16 @@ export const load: PageServerLoad = async ({ cookies }) => {
 */
 
 
-export const load: PageServerLoad = async ({ parent }) => {
-  const { session } = await parent();
-  if (session) {
+export const load: PageServerLoad = async () => {
+  /*const { session } = await parent();
+  if (session) {*/
     
     return {
-      rosters: await rosterService.getRosters(session.token),
-      agencies: await rosterService.getAgencies(session.token)
+      rosters: await rosterService.getRosters(),
+      agencies: await rosterService.getAgencies()
     };
   }
-};
+
 
 
 

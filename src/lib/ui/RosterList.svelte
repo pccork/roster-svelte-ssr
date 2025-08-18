@@ -19,12 +19,18 @@
             {roster.hour}
           </td>
           <td>
+            
             {roster.profession}
-          </td><td>
-            {roster.agency.code}, {roster.agency.AgencyName}
           </td>
           <td>
-            {roster.staff.lastName}, {roster.staff.firstName}
+            {#if typeof roster.agency !== "string"}
+               <a href={`/agency/${roster.agency._id}`}>{roster.agency.code}, {roster.agency.AgencyName}</a>
+             {/if}
+          </td>
+          <td>
+            {#if typeof roster.agency !== "string"}
+               {roster.staff.lastName}, {roster.staff.firstName}
+            {/if}
           </td>
         </tr>
       {/each}

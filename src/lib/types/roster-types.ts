@@ -1,3 +1,15 @@
+export interface RosterService {
+  signup(user: User): Promise<boolean>;
+  login(email: string, password: string): Promise<Session | null>;
+  rostering(roster: Roster): Promise<Roster | false>;
+  getAgencies(): Promise<Agency[]>;
+  getRosters(agencyId?: string): Promise<Roster[]>;
+}
+
+
+
+
+
 export interface Session {
     name: string;
     _id: string;
