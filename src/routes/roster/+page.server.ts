@@ -1,7 +1,7 @@
 import { rosterService } from "$lib/services/roster-service";
 import type { Session } from "$lib/types/roster-types";
 import type { PageServerLoad } from "./$types";
-import type { RequestEvent } from "@sveltejs/kit";
+//import type { RequestEvent } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {
   /*const { session } = await parent();
@@ -15,7 +15,7 @@ export const load: PageServerLoad = async () => {
 };
 
 export const actions = {
-  roster: async ({ request, cookies: RequestEvent }) => {
+  roster: async ({ request, cookies }) => {
     const cookieStr = cookies.get("roster-user") as string;
     if (!cookieStr) {
       return { success: false, error: "No user session found" };

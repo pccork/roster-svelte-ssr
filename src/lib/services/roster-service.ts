@@ -60,6 +60,7 @@ export const rosterService = {
   },
 
   async getAgencies(): Promise<Agency[]> {
+ 
     try {
       const agencies = await agencyStore.find();
       return JSON.parse(JSON.stringify(agencies));
@@ -67,6 +68,7 @@ export const rosterService = {
       return [];
     }
   },
+  
 
   async getRosters(candidateId?: string): Promise<Roster[]> {
     try {

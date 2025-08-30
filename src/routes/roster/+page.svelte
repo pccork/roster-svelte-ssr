@@ -26,7 +26,7 @@
         map.addMarker(roster.lat, roster.lng, "");
         map.moveTo(roster.lat, roster.lng);
         refreshRosterState(currentRosters.rosters, currentAgencies.agencies);
-        message = `Roster entered ${roster.hour} to ${roster.agency.code} ${roster.agency.AgencyName}`;
+        message = `Roster entered ${roster.hour} to ${roster.agency.AgencyName} ${roster.agency.code}`;
       }
     };
   };
