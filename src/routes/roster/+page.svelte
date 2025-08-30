@@ -16,6 +16,9 @@
     subTitle.text = "Roster Entry";
     let { data }: PageProps = $props();
     let message = $state("Please enter Roster!");
+    onMount(async () => {
+    currentAgencies.agencies = data.agencies;
+    });
     
 
   const handleRosterSuccess = () => {

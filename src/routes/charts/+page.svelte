@@ -6,15 +6,16 @@
     import type { PageProps } from "./$types";
     import { refreshRosterState } from "$lib/services/roster-utils";
     //Add chart liberies
-    import { Chart as EChart } from 'svelte-echarts';
-    import { convertToECharts } from '$lib/services/chart-utils'; 
+    import { BarChart, PieChart } from 'layerchart';
+    import { convertToDotPlot } from '$lib/services/chart-utils';
     
-    let { data }: PageProps = $props();
+     let { data }: PageProps = $props();
     refreshRosterState(data.rosters, data.agencies);
-    const eChartOptions = convertToECharts(currentDataSets.rostersByProfession);
-    console.log("EChart Options:", eChartOptions);
+    const lineStyleChartData = convertToDotPlot(currentDataSets.rostersByProfession);
+    const maxValue = Math.max(...lineStyleChartData.map(d => d.value));
+ 
+    console.log("LayerChart Data:", lineStyleChartData);
   </script>
-
 
 <!-- First row: Frappe charts -->
 <div class="columns">
@@ -33,9 +34,36 @@
 
 <!-- Second row: ECharts line chart -->
 <div class="columns">
-  <div class="column is-full">
-    <Card title="Roster Hours by Profession (ECharts Line)">
-      <EChart options={eChartOptions} style="height: 400px;" />
+  <div class="column">
+    <Card title="Roster Distribution by Profession (Table with Bars)">
+      <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th style="text-align: left; padding: 4px;">Profession</th>
+            <th style="text-align: left; padding: 4px;">Hours</th>
+            <th style="text-align: left; padding: 16px;">Visual</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each lineStyleChartData as item}
+            <tr>
+              <td style="padding: 4px;">{item.label}</td>
+              <td style="padding: 4px;">{item.value}</td>
+              <td style="padding: 16px;">
+                <div
+                  style="
+                    height: 12px;
+                    background-color: #333;
+                    width: {(item.value / maxValue) * 100}%;
+                    border-radius: 4px;
+                    transition: width 0.3s ease;
+                  "
+                ></div>
+              </td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
     </Card>
   </div>
 </div>
