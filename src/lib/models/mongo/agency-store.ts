@@ -1,4 +1,4 @@
-import type { Agency } from "$lib/types/donation-types.js";
+import type { Agency } from "$lib/types/roster-types.js";
 import { AgencyMongoose } from "./agency.js";
 
 export const agencyStore = {

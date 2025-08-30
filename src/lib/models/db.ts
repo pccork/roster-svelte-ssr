@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { MONGO_URL } from "$env/static/private";
+import type { Db } from "../types/roster-types.js";
 /* 
   0 - disconnected
   1 - connected
@@ -40,3 +41,10 @@ export const dbDisconnect = async () => {
   mongoConnection.isConnected = 0;
   console.log("disconnecting");
 };
+
+export const db: Db = {
+  userStore: null,
+  agencyStore: null,
+  rosterStore: null,
+};
+

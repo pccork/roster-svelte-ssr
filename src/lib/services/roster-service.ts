@@ -5,8 +5,9 @@ import { userStore } from "$lib/models/mongo/user-store";
 import { rosterStore } from "$lib/models/mongo/roster-store";
 import { agencyStore } from "$lib/models/mongo/agency-store";
 
-/*
-export const rosterService = {
+
+
+/*export const rosterService = {
     baseUrl: "http://localhost:4000",
     //baseUrl: "https://rostercare-4.onrender.com",
 
@@ -18,9 +19,8 @@ export const rosterService = {
       console.log(error);
       return false;
     }
-  }, */
-
-    export const rosterService: RosterService = {
+  },*/ 
+  export const rosterService: RosterService = {
       async signup(user: User): Promise<boolean> {
         try {
           const newUser = await userStore.add(user);
@@ -29,7 +29,7 @@ export const rosterService = {
           console.log(error);
           return false;
         }
-      },
+      },  
 
     async login(email: string, password: string): Promise<Session | null> {
     try {
@@ -82,8 +82,16 @@ export const rosterService = {
     } catch (error) {
       return [];
     }
-  }
+  },
 };
+
+
+
+
+
+
+
+
 
   /*
   async login(email: string, password: string): Promise<Session | null> {

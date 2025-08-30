@@ -8,8 +8,6 @@ export interface RosterService {
 
 
 
-
-
 export interface Session {
     name: string;
     _id: string;
@@ -45,4 +43,18 @@ export interface Session {
     datasets: { values: number[] }[]; //datasets: { values: number[] }[]; 
     //datasets: [{ values: number[] }];A tuple like means “exactly one item in the array.
   }
+
+export type Db = {
+    userStore: any;
+    agencyStore: any;
+    rosterStore: any;
+  };
+  
+  
+
+
+
+
+  
+
   
