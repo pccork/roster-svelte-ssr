@@ -9,7 +9,7 @@
   let lng = $state(-7.15242);
 
   let { agencyList = [], enhanceFn, message = $bindable("") } = $props();
-  agencyList = Array.isArray(agencyList) && agencyList.length ? agencyList : defaultAgencies;
+  agencyList = Array.isArray(agencyList) && agencyList.length > 0? agencyList : defaultAgencies;
   
   console.log("Agency list in form:", agencyList);
   
