@@ -4,7 +4,7 @@ RosterCare is a web application designed to manage and log roster hours for heal
 ### Frontend: roster-svelte-ssr (https://github.com/pccork/roster-svelte-ssr)
 
 1. Go to [GitHub](https://github.com/pccork/roster-svelte-ssr) 
-1. Clone the repo:
+   Clone the repo:
    ```bash
    git clone 
 2. Go to [Netify](to be deployed when it is ready)
@@ -13,7 +13,11 @@ RosterCare is a web application designed to manage and log roster hours for heal
 ### Backend: RosterCare 
 
 1. Go to [GitHub](https://https://github.com/pccork/RosterCare) 
-1. Go to [Render](https://rostercare-4.onrender.com) and remix the API server.
+2. Go to [Render](https://rostercare-4.onrender.com) and remix the API server.
+
+### Stand alone app with svelte kit attempt with local repo 
+The signup and login function fucntioning
+1. https://github.com/pccork/roster-svelte-ssr/tree/feature/09-full
 
 
 
